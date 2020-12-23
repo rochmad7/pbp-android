@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:news_app/models/news.dart';
-import 'package:news_app/constants.dart';
+part of 'widgets.dart';
 
 class SecondaryCard extends StatelessWidget {
-  final News news;
-  SecondaryCard({this.news});
+  final Post post;
+  SecondaryCard({this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class SecondaryCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
               image: DecorationImage(
-                image: NetworkImage(news.image),
+                image: NetworkImage(post.fileGambar),
                 fit: BoxFit.cover,
               ),
             ),
@@ -36,14 +34,14 @@ class SecondaryCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    news.title,
+                    post.judul,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: kTitleCard,
                   ),
                   SizedBox(height: 4.0),
                   Text(
-                    news.subtitle,
+                    post.namaPenulis,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: kDetailContent,
@@ -51,7 +49,7 @@ class SecondaryCard extends StatelessWidget {
                   Spacer(),
                   Row(
                     children: [
-                      Text(news.time, style: kDetailContent),
+                      Text("12 Desember", style: kDetailContent),
                       SizedBox(width: 10.0),
                       CircleAvatar(
                         radius: 5.0,
@@ -59,7 +57,7 @@ class SecondaryCard extends StatelessWidget {
                       ),
                       SizedBox(width: 10.0),
                       Text(
-                        "${news.estimate} min read",
+                        "${12} min read",
                         style: kDetailContent,
                       )
                     ],

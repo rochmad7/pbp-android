@@ -1,28 +1,29 @@
 part of 'models.dart';
 
 class Post extends Equatable {
-  final int idPost;
-  final int idKategori;
+  final String idPost;
+  final String idKategori;
   final String namaKategori;
   final String namaPenulis;
   final String judul;
   final String slug;
   final String isiPost;
   final String fileGambar;
-  final DateTime tglInsert;
-  final DateTime tglUpdate;
+  // final DateTime tglInsert;
+  // final DateTime tglUpdate;
 
-  Post(
-      {this.idPost,
-      this.idKategori,
-      this.namaKategori,
-      this.namaPenulis,
-      this.judul,
-      this.slug,
-      this.isiPost,
-      this.fileGambar,
-      this.tglInsert,
-      this.tglUpdate});
+  Post({
+    this.idPost,
+    this.idKategori,
+    this.namaKategori,
+    this.namaPenulis,
+    this.judul,
+    this.slug,
+    this.isiPost,
+    this.fileGambar,
+    // this.tglInsert,
+    // this.tglUpdate,
+  });
 
   factory Post.fromJson(Map<String, dynamic> data) {
     return Post(
@@ -33,23 +34,25 @@ class Post extends Equatable {
       judul: data["judul"],
       slug: data["slug"],
       isiPost: data["isi_post"],
-      fileGambar: data["file_gambar"],
-      tglInsert: data["tgl_insert"],
-      tglUpdate: data["tgl_update"],
+      // fileGambar: baseURLPost + data['file_gambar'],
+      fileGambar: baseURLPost + 'artikel1.jpg',
+      // tglInsert: data["tgl_insert"],
+      // tglUpdate: data["tgl_update"],
     );
   }
 
-  Post copyWith(
-      {int idPost,
-      int idKategori,
-      String namaKategori,
-      String namaPenulis,
-      String judul,
-      String slug,
-      String isiPost,
-      String fileGambar,
-      DateTime tglInsert,
-      DateTime tglUpdate}) {
+  Post copyWith({
+    String idPost,
+    String idKategori,
+    String namaKategori,
+    String namaPenulis,
+    String judul,
+    String slug,
+    String isiPost,
+    String fileGambar,
+    // DateTime tglInsert,
+    // DateTime tglUpdate,
+  }) {
     return Post(
       idPost: idPost ?? this.idPost,
       idKategori: idKategori ?? this.idKategori,
@@ -59,8 +62,8 @@ class Post extends Equatable {
       slug: slug ?? this.slug,
       isiPost: isiPost ?? this.isiPost,
       fileGambar: fileGambar ?? this.fileGambar,
-      tglInsert: tglInsert ?? this.tglInsert,
-      tglUpdate: tglUpdate ?? this.tglUpdate,
+      // tglInsert: tglInsert ?? this.tglInsert,
+      // tglUpdate: tglUpdate ?? this.tglUpdate,
     );
   }
 
@@ -74,8 +77,8 @@ class Post extends Equatable {
         slug,
         isiPost,
         fileGambar,
-        tglInsert,
-        tglUpdate
+        // tglInsert,
+        // tglUpdate
       ];
 }
 
@@ -83,8 +86,8 @@ class Post extends Equatable {
 
 List<Post> mockPosts = [
   Post(
-    idPost: 1,
-    idKategori: 3,
+    idPost: "1",
+    idKategori: "3",
     namaKategori: "Olahraga",
     namaPenulis: "Rochmad",
     judul: "GOR Undip Ditutup Selama Pandemi Corona",
@@ -94,8 +97,8 @@ List<Post> mockPosts = [
     fileGambar: baseURLPost + 'artikel1.jpg',
   ),
   Post(
-    idPost: 2,
-    idKategori: 2,
+    idPost: "2",
+    idKategori: "2",
     namaKategori: "Ilmu Pengetahuan",
     namaPenulis: "Husni",
     judul: "Pakar Undip: Pentingnya Iptek bagi Ketersediaan Air Tawar",
@@ -105,8 +108,8 @@ List<Post> mockPosts = [
     fileGambar: baseURLPost + 'artikel2.jpg',
   ),
   Post(
-    idPost: 3,
-    idKategori: 1,
+    idPost: "3",
+    idKategori: "1",
     namaKategori: "Berita",
     namaPenulis: "Fatah",
     judul: "Undip akan Dorong Semua Kampus Buka Posko Pengaduan",
@@ -116,8 +119,8 @@ List<Post> mockPosts = [
     fileGambar: baseURLPost + 'artikel3.jpg',
   ),
   Post(
-    idPost: 4,
-    idKategori: 1,
+    idPost: "4",
+    idKategori: "1",
     namaKategori: "Berita",
     namaPenulis: "Rizqi",
     judul:
@@ -129,8 +132,8 @@ List<Post> mockPosts = [
     fileGambar: baseURLPost + 'artikel4.jpg',
   ),
   Post(
-    idPost: 5,
-    idKategori: 4,
+    idPost: "5",
+    idKategori: "4",
     namaKategori: "Prestasi",
     namaPenulis: "Husni",
     judul:
@@ -143,8 +146,8 @@ List<Post> mockPosts = [
         '128-mahasiswa-undip-rebut-posisi-terhormat-di-program-kreatifitas-mahasiswa-pkm-tahun-2020.jpeg',
   ),
   Post(
-    idPost: 6,
-    idKategori: 4,
+    idPost: "6",
+    idKategori: "4",
     namaKategori: "Prestasi",
     namaPenulis: "Rochmad",
     judul: "Mahasiswa Asing UNDIP Sabet Juara I LBBI 2020 di Surakarta",
@@ -155,8 +158,8 @@ List<Post> mockPosts = [
         'mahasiswa-asing-undip-sabet-juara-i-lbbi-2020-di-surakarta.jpeg',
   ),
   Post(
-    idPost: 7,
-    idKategori: 2,
+    idPost: "7",
+    idKategori: "2",
     namaKategori: "Ilmu Pengetahuan",
     namaPenulis: "Fatah",
     judul:
@@ -169,8 +172,8 @@ List<Post> mockPosts = [
         'rehabilitasi-ekosistem-mangrove-di-wilayah-terdampak-rob-dan-erosi-di-pesisir-tambakrejo.jpeg',
   ),
   Post(
-    idPost: 8,
-    idKategori: 2,
+    idPost: "8",
+    idKategori: "2",
     namaKategori: "Ilmu Pengetahuan",
     namaPenulis: "Rizqi",
     judul:

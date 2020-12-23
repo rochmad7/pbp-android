@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:news_app/constants.dart';
-import 'package:news_app/models/news.dart';
-import 'package:news_app/widgets/circle_button.dart';
+part of 'pages.dart';
 
-class ReadNewsView extends StatelessWidget {
-  final News news;
-  ReadNewsView({this.news});
+class ReadPostView extends StatelessWidget {
+  final Post post;
+  ReadPostView({this.post});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,13 +40,13 @@ class ReadNewsView extends StatelessWidget {
           children: [
             SizedBox(height: 12.0),
             Hero(
-              tag: news.seen,
+              tag: 12,
               child: Container(
                 height: 220.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   image: DecorationImage(
-                    image: NetworkImage(news.image),
+                    image: NetworkImage(post.fileGambar),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -75,7 +72,7 @@ class ReadNewsView extends StatelessWidget {
                       ),
                       SizedBox(width: 6.0),
                       Text(
-                        news.category,
+                        post.namaKategori,
                         style: kCategoryTitle,
                       ),
                     ],
@@ -84,21 +81,21 @@ class ReadNewsView extends StatelessWidget {
                 Spacer(),
                 Status(
                   icon: Icons.remove_red_eye,
-                  total: news.seen,
+                  total: "15",
                 ),
                 SizedBox(width: 15.0),
                 Status(
                   icon: Icons.favorite_border,
-                  total: news.favorite,
+                  total: "20",
                 ),
               ],
             ),
             SizedBox(height: 12.0),
-            Text(news.title, style: kTitleCard.copyWith(fontSize: 28.0)),
+            Text(post.judul, style: kTitleCard.copyWith(fontSize: 28.0)),
             SizedBox(height: 15.0),
             Row(
               children: [
-                Text(news.time, style: kDetailContent),
+                Text("15 Desember", style: kDetailContent),
                 SizedBox(width: 5.0),
                 SizedBox(
                   width: 10.0,
@@ -109,16 +106,80 @@ class ReadNewsView extends StatelessWidget {
                 ),
                 SizedBox(width: 5.0),
                 Text(
-                  news.author,
+                  post.namaPenulis,
                   style: kDetailContent.copyWith(color: Colors.black),
                 ),
               ],
             ),
             SizedBox(height: 15.0),
             Text(
-              news.content,
+              post.isiPost,
               style: descriptionStyle,
             ),
+            Html(
+              data: post.isiPost,
+              //Optional parameters:
+              style: {
+                "html": Style(
+                  backgroundColor: Colors.white,
+                ),
+                "table": Style(
+                  backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                ),
+                "tr": Style(
+                  border: Border(bottom: BorderSide(color: Colors.grey)),
+                ),
+                "th": Style(
+                  padding: EdgeInsets.all(6),
+                  backgroundColor: Colors.grey,
+                ),
+                "td": Style(
+                  padding: EdgeInsets.all(6),
+                ),
+                "var": Style(fontFamily: 'serif'),
+              },
+              customRender: {
+                "flutter":
+                    (RenderContext context, Widget child, attributes, _) {
+                  return FlutterLogo(
+                    style: (attributes['horizontal'] != null)
+                        ? FlutterLogoStyle.horizontal
+                        : FlutterLogoStyle.markOnly,
+                    textColor: context.style.color,
+                    size: context.style.fontSize.size * 5,
+                  );
+                },
+              },
+              onLinkTap: (url) async => await launch(url),
+              onImageTap: (src) {
+                print(src);
+              },
+              onImageError: (exception, stackTrace) {
+                print(exception);
+              },
+            ),
+            // Html(
+            //   data: post.isiPost,
+            //   //Optional parameters:
+            //   onLinkTap: (url) {
+            //     // open url in a webview
+            //   },
+            //   style: {
+            //     "div": Style(
+            //       block: Block(
+            //         margin: EdgeInsets.all(16),
+            //         border: Border.all(width: 6),
+            //         backgroundColor: Colors.grey,
+            //       ),
+            //       textStyle: TextStyle(
+            //         color: Colors.red,
+            //       ),
+            //     ),
+            //   },
+            //   onImageTap: (src) {
+            //     // Display the image in large form.
+            //   },
+            // ),
             SizedBox(height: 25.0)
           ],
         ),

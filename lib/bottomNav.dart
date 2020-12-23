@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:news_app/views/account_view.dart';
-import 'package:news_app/views/favorite_view.dart';
-import 'package:news_app/views/home_view.dart';
-import 'package:news_app/views/search_view.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+part of 'views/pages.dart';
 
 class BottomNav extends StatefulWidget {
   @override
@@ -43,12 +37,8 @@ class _BottomNavState extends State<BottomNav> {
         items: _navBarList
             .map(
               (e) => BottomNavigationBarItem(
-                icon: (
-                  e.icon
-                ),
-                activeIcon: (
-                  e.activeIcon
-                ),
+                icon: (e.icon),
+                activeIcon: (e.activeIcon),
                 label: e.title,
               ),
             )
@@ -81,18 +71,36 @@ class NavBarItem {
 
 List<NavBarItem> _navBarList = [
   NavBarItem(
-    icon: Icon(Icons.home, size: 30,),
-    activeIcon: Icon(Icons.home, size: 30,),
+    icon: Icon(
+      Icons.home,
+      size: 30,
+    ),
+    activeIcon: Icon(
+      Icons.home,
+      size: 30,
+    ),
     title: "Home",
   ),
   NavBarItem(
-    icon: Icon(Icons.search, size: 30,),
-    activeIcon: Icon(Icons.search, size: 30,),
+    icon: Icon(
+      Icons.search,
+      size: 30,
+    ),
+    activeIcon: Icon(
+      Icons.search,
+      size: 30,
+    ),
     title: "Search",
   ),
   NavBarItem(
-    icon: Icon(Icons.apps, size: 30,),
-    activeIcon: Icon(Icons.apps, size: 30,),
+    icon: Icon(
+      Icons.apps,
+      size: 30,
+    ),
+    activeIcon: Icon(
+      Icons.apps,
+      size: 30,
+    ),
     title: "Categories",
   ),
   // NavBarItem(

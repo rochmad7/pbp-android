@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:news_app/models/news.dart';
-import 'package:news_app/constants.dart';
+part of 'widgets.dart';
 
 class PrimaryCard extends StatelessWidget {
-  final News news;
-  PrimaryCard({this.news});
+  final Post post;
+  PrimaryCard({this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -24,27 +22,24 @@ class PrimaryCard extends StatelessWidget {
                 backgroundColor: kGrey1,
               ),
               SizedBox(width: 10.0),
-              Text(news.category, style: kCategoryTitle)
+              Text(post.namaKategori, style: kCategoryTitle)
             ],
           ),
           SizedBox(height: 5.0),
           Expanded(
-            child: Hero(
-              tag: news.seen,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  image: DecorationImage(
-                    image: NetworkImage(news.image),
-                    fit: BoxFit.cover,
-                  ),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                image: DecorationImage(
+                  image: NetworkImage(post.fileGambar),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
           SizedBox(height: 5.0),
           Text(
-            news.title,
+            post.judul,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
             style: kTitleCard,
@@ -53,7 +48,7 @@ class PrimaryCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                news.time,
+                "12 Desember",
                 style: kDetailContent,
               ),
               SizedBox(width: 10.0),
@@ -62,7 +57,7 @@ class PrimaryCard extends StatelessWidget {
                 backgroundColor: kGrey1,
               ),
               SizedBox(width: 10.0),
-              Text("${news.estimate} min read", style: kDetailContent)
+              Text("${12} min read", style: kDetailContent)
             ],
           )
         ],

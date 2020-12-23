@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/html_parser.dart';
+// import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
+import 'package:news_app/constants.dart';
+import 'package:news_app/cubit/cubit.dart';
+import 'package:news_app/models/models.dart';
+import 'package:news_app/widgets/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+// import 'package:flutter_html/flutter_html.dart';
+
+part 'account_view.dart';
+part 'home_view.dart';
+part 'favorite_view.dart';
+part 'search_view.dart';
+part 'read_posts_view.dart';
+part 'recent_tab_view.dart';
+part 'popular_tab_view.dart';
+part 'trending_tab_view.dart';
+part 'package:news_app/bottomNav.dart';
