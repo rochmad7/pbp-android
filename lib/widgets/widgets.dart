@@ -7,3 +7,4 @@ import 'package:news_app/views/pages.dart';
 part 'secondary_card.dart';
 part 'primary_card.dart';
 part 'circle_button.dart';
+part 'comment.dart';

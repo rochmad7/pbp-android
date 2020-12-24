@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/html_parser.dart';
 import 'package:flutter_html/style.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:news_app/constants.dart';
 import 'package:news_app/cubit/cubit.dart';
 import 'package:news_app/models/models.dart';

@@ -12,14 +12,15 @@ class TrendingTabView extends StatelessWidget {
             shrinkWrap: true,
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index) {
-              var posts = state.posts[index];
+              var post = state.posts[index];
 
               return InkWell(
-                onTap: () {
+                onTap: () async{
+                  List<Komentar> komentar = await context.read<KomentarCubit>().getComments(post.idPost);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ReadPostView(post: posts),
+                      builder: (context) => ReadPostView(post: post,komentar: komentar),
                     ),
                   );
                 },
@@ -28,7 +29,7 @@ class TrendingTabView extends StatelessWidget {
                   height: 300.0,
                   margin:
                       EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
-                  child: PrimaryCard(post: posts),
+                  child: PrimaryCard(post: post),
                 ),
               );
             },

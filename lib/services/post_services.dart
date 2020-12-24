@@ -23,9 +23,9 @@ class PostServices {
 
     var data = jsonDecode(response.body);
 
-    List<Post> categories =
+    List<Post> posts =
         (data['post'] as Iterable).map((e) => Post.fromJson(e)).toList();
 
-    return ApiReturnValue(value: categories);
+    return ApiReturnValue(value: posts);
   }
 }

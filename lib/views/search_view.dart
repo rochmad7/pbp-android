@@ -89,11 +89,15 @@ class _SearchViewState extends State<SearchView> {
                           ? items[index]
                           : state.posts[index];
                       return InkWell(
-                        onTap: () {
+                        onTap: () async {
+                          List<Komentar> komentar = await context
+                              .read<KomentarCubit>()
+                              .getComments(post.idPost);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReadPostView(post: post),
+                              builder: (context) =>
+                                  ReadPostView(post: post, komentar: komentar),
                             ),
                           );
                         },

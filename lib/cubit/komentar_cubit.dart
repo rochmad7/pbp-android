@@ -8,14 +8,16 @@ part 'komentar_state.dart';
 class KomentarCubit extends Cubit<KomentarState> {
   KomentarCubit() : super(KomentarInitial());
 
-  Future<void> getComments(int idpost) async {
+  Future<List<Komentar>> getComments(int idpost) async {
     ApiReturnValue<List<Komentar>> result =
         await KomentarServices.getComments(idpost);
 
     if (result.value != null) {
       emit(KomentarLoaded(result.value));
+      return result.value;
     } else {
       emit(KomentarLoadingFailed(result.message));
+      return null;
     }
   }
 }

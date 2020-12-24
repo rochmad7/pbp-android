@@ -2,7 +2,8 @@ part of 'pages.dart';
 
 class ReadPostView extends StatelessWidget {
   final Post post;
-  ReadPostView({this.post});
+  final List<Komentar> komentar;
+  ReadPostView({this.post, this.komentar});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,7 +164,52 @@ class ReadPostView extends StatelessWidget {
                 print(exception);
               },
             ),
-            SizedBox(height: 25.0)
+            SizedBox(height: 25.0),
+            Text("Komentar",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            BlocBuilder<KomentarCubit, KomentarState>(
+              builder: (_, state) {
+                if (state is KomentarLoaded) {
+                  if (state.comments.length == 0) {
+                    return Column(
+                      children: [
+                        SizedBox(height: 10.0),
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 16),
+                          color: Colors.black12,
+                          width: double.infinity,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(MdiIcons.alert),
+                                SizedBox(width: 5),
+                                Text("Belum ada komentar")
+                              ]),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return ListView.builder(
+                      itemCount: komentar.length,
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        var comment = komentar[index];
+                        return Comment(
+                          komentar: comment,
+                        );
+                      },
+                    );
+                  }
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+            SizedBox(height: 20),
           ],
         ),
       ),

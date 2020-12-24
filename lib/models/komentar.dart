@@ -3,38 +3,57 @@ part of 'models.dart';
 class Komentar extends Equatable {
   final int idKomentar;
   final int idPost;
+  final int idPenulis;
   final String isi;
   final String nama;
   final DateTime tglInsert;
 
-  Komentar({this.idKomentar, this.idPost, this.isi, this.nama, this.tglInsert});
+  Komentar({
+    this.idKomentar,
+    this.idPost,
+    this.idPenulis,
+    this.isi,
+    this.nama,
+    this.tglInsert,
+  });
 
   factory Komentar.fromJson(Map<String, dynamic> data) {
     return Komentar(
-      idKomentar: data["idkomentar"],
-      idPost: data["idpost"],
+      idKomentar: int.parse(data["idkomentar"].toString()),
+      idPost: int.parse(data["idpost"].toString()),
+      idPenulis: int.parse(data["idpenulis"].toString()),
       isi: data["isi"],
       nama: data["nama"],
-      tglInsert: data["tgl_insert"],
+      tglInsert: DateTime.parse(data["tgl_insert"].toString()),
     );
   }
 
-  Komentar copyWith(
-      {int idKomentar,
-      int idPost,
-      String isi,
-      String nama,
-      DateTime tglInsert}) {
+  Komentar copyWith({
+    int idKomentar,
+    int idPost,
+    int idPenulis,
+    String isi,
+    String nama,
+    DateTime tglInsert,
+  }) {
     return Komentar(
         idKomentar: idKomentar ?? this.idKomentar,
         idPost: idPost ?? this.idPost,
+        idPenulis: idPenulis ?? this.idPenulis,
         isi: isi ?? this.isi,
         nama: nama ?? this.nama,
         tglInsert: tglInsert ?? this.tglInsert);
   }
 
   @override
-  List<Object> get props => [idKomentar, idPost, isi, nama, tglInsert];
+  List<Object> get props => [
+        idKomentar,
+        idPost,
+        idPenulis,
+        isi,
+        nama,
+        tglInsert,
+      ];
 }
 
 // Our demo Komentar

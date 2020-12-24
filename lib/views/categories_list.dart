@@ -5,7 +5,6 @@ String icon1 = "material://Icons.work";
 String icon2 = "material://Icons.smartphone";
 
 List list = [
-
   {
     "id": "business",
     "name": "Business",

@@ -12,14 +12,18 @@ class RecentTabView extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              var posts = state.posts[index];
+              var post = state.posts[index];
 
               return InkWell(
-                onTap: () {
+                onTap: () async {
+                  List<Komentar> komentar = await context
+                      .read<KomentarCubit>()
+                      .getComments(post.idPost);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ReadPostView(post: posts),
+                      builder: (context) =>
+                          ReadPostView(post: post, komentar: komentar),
                     ),
                   );
                 },
@@ -27,7 +31,7 @@ class RecentTabView extends StatelessWidget {
                   width: double.infinity,
                   height: 145.0,
                   margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
-                  child: SecondaryCard(post: posts),
+                  child: SecondaryCard(post: post),
                 ),
               );
             },

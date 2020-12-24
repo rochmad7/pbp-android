@@ -33,19 +33,23 @@ class PopularTabView extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        var posts = postLoaded.posts[index];
+                        var post = postLoaded.posts[index];
                         return InkWell(
-                          onTap: () {
+                          onTap: () async {
+                            List<Komentar> komentar = await context
+                                .read<KomentarCubit>()
+                                .getComments(post.idPost);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ReadPostView(post: posts),
+                                builder: (context) => ReadPostView(
+                                    post: post, komentar: komentar),
                               ),
                             );
                           },
                           child: Container(
                             margin: EdgeInsets.only(right: 12.0),
-                            child: PrimaryCard(post: posts),
+                            child: PrimaryCard(post: post),
                           ),
                         );
                       },
@@ -72,13 +76,17 @@ class PopularTabView extends StatelessWidget {
                     shrinkWrap: true,
                     physics: ScrollPhysics(),
                     itemBuilder: (context, index) {
-                      var recent = state.posts[index];
+                      var post = state.posts[index];
                       return InkWell(
-                        onTap: () {
+                        onTap: () async {
+                          List<Komentar> komentar = await context
+                              .read<KomentarCubit>()
+                              .getComments(post.idPost);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ReadPostView(post: recent),
+                              builder: (context) =>
+                                  ReadPostView(post: post, komentar: komentar),
                             ),
                           );
                         },
@@ -87,7 +95,7 @@ class PopularTabView extends StatelessWidget {
                           height: 145.0,
                           margin: EdgeInsets.symmetric(
                               horizontal: 18.0, vertical: 8.0),
-                          child: SecondaryCard(post: recent),
+                          child: SecondaryCard(post: post),
                         ),
                       );
                     },
