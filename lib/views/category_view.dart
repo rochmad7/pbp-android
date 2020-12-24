@@ -1,99 +1,124 @@
 part of 'pages.dart';
 
-class CategoryView extends StatefulWidget {
-  CategoryView({Key key}) : super(key: key);
+class CategoryView extends StatelessWidget {
 
-  @override
-  _CategoryViewState createState() => new _CategoryViewState();
-}
+  // List<Kategori> categories;
+  // var items = List<Kategori>();
 
-class _CategoryViewState extends State<CategoryView> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   fetchData();
+  //   super.initState();
+  // }
+  //
+  // void fetchData() async {
+  //   final response = await http.get(baseURLAPI + 'kategori');
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       var data = jsonDecode(response.body);
+  //       print(data['kategori'][0]['icon']);
+  //
+  //       categories =
+  //           (data['kategori'] as Iterable).map((e) => Kategori.fromJson(e)).toList();
+  //       print(categories);
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Colors.grey[200],
-      body: categoriesList.list == null
-          ? const Center(child: const CircularProgressIndicator())
-          : new GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, mainAxisSpacing: 25.0),
-        padding: const EdgeInsets.all(10.0),
-        itemCount: categoriesList.list.length,
-        itemBuilder: (BuildContext context, int index) {
-          return new GridTile(
-            footer: new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new Flexible(
-                    child: new SizedBox(
-                      height: 16.0,
-                      width: 100.0,
-                      child: new Text(
-                        categoriesList.list[index]["name"],
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
+      body: BlocBuilder<KategoriCubit, KategoriState>(
+        builder: (_, state) {
+      if (state is KategoriLoaded) {
+        // print(state.kategori[0].icon);
+        return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, mainAxisSpacing: 25.0),
+          padding: const EdgeInsets.all(10.0),
+          itemCount: state.kategori.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GridTile(
+              footer: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Flexible(
+                      child: SizedBox(
+                        height: 16.0,
+                        width: 130.0,
+                        child: Text(
+                          state.kategori[index].nama,
+                          maxLines: 1,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                    ),
-                  )
-                ]),
-            child: new Container(
-              height: 500.0,
-              child: new GestureDetector(
-                child: new Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    new SizedBox(
-                      height: 100.0,
-                      width: 100.0,
-                      child: new Row(
-                        children: <Widget>[
-                          new Stack(
-                            children: <Widget>[
-                              new SizedBox(
-                                child: new Container(
-                                  child: new CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    radius: 40.0,
-                                    child: new Icon(
-                                        categoriesList.list[index]
-                                        ["icon"],
-                                        size: 40.0,
-                                        color: categoriesList.list[index]
-                                        ["color"]),
+                    )
+                  ]),
+              child: Container(
+                height: 500.0,
+                child: GestureDetector(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 100.0,
+                        width: 100.0,
+                        child: Row(
+                          children: <Widget>[
+                            Stack(
+                              children: <Widget>[
+                                SizedBox(
+                                  child: Container(
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      radius: 40.0,
+                                      child: Icon(
+                                        XIconData.fromUri(state.kategori[index].icon),
+                                        // Icons.emoji_events,
+                                          size: 40.0,
+                                          color: state.kategori[index].iconColor.toColor(),
+                                          // color: Colors.grey,
+                                    ),
+                        ),
+                                    padding: const EdgeInsets.only(
+                                        left: 10.0, right: 10.0),
                                   ),
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, right: 10.0),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                  onTap: () {
+                    // Navigator.push(
+                    // context,
+                    // MaterialPageRoute(
+                    //     builder: (_) =>
+                    //     ArticleSourceScreen.ArticleSourceScreen(
+                    //       sourceId: categoriesList.list[index]
+                    //       ['id'],
+                    //       sourceName: categoriesList.list[index]
+                    //       ["name"],
+                    //       isCategory: true,
+                    //     )));
+                  },
                 ),
-                onTap: () {
-                  // Navigator.push(
-                      // context,
-                      // new MaterialPageRoute(
-                      //     builder: (_) =>
-                      //     new ArticleSourceScreen.ArticleSourceScreen(
-                      //       sourceId: categoriesList.list[index]
-                      //       ['id'],
-                      //       sourceName: categoriesList.list[index]
-                      //       ["name"],
-                      //       isCategory: true,
-                      //     )));
-                },
               ),
-            ),
-          );
+            );
+          },
+        );
+      } else {
+        return Container(
+          margin: EdgeInsets.only(top: 50),
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }
         },
       ),
     );

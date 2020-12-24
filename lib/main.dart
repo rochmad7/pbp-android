@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
           BlocProvider(
               create: (_) =>
                   PostCubit()..getPosts(idKategori: null, keyword: null)),
+          BlocProvider(
+              create: (_) =>
+                  KategoriCubit()..getKategori()),
         ],
         child: GetMaterialApp(
           title: 'PBP Android',

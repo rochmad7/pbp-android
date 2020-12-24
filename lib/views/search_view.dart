@@ -25,6 +25,8 @@ class _SearchViewState extends State<SearchView> {
 
         posts =
             (data['post'] as Iterable).map((e) => Post.fromJson(e)).toList();
+        print(posts);
+
       });
     }
   }
