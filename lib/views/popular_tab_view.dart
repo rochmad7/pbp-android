@@ -16,13 +16,22 @@ class PopularTabView extends StatelessWidget {
               padding: EdgeInsets.only(left: 18.0),
               child: BlocBuilder<PostCubit, PostState>(
                 builder: (_, state) {
-                  if (state is PostLoaded) {
+                  if (state is PostInitial) {
+                    return Center(
+                      child: SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  } else {
+                    PostLoaded postLoaded = state as PostLoaded;
                     return ListView.builder(
-                      itemCount: state.posts.length,
+                      itemCount: postLoaded.posts.length,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        var posts = state.posts[index];
+                        var posts = postLoaded.posts[index];
                         return InkWell(
                           onTap: () {
                             Navigator.push(
@@ -38,10 +47,6 @@ class PopularTabView extends StatelessWidget {
                           ),
                         );
                       },
-                    );
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(),
                     );
                   }
                 },
@@ -86,8 +91,11 @@ class PopularTabView extends StatelessWidget {
                     },
                   );
                 } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
+                  return Container(
+                    margin: EdgeInsets.only(top: 50),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   );
                 }
               },

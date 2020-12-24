@@ -1,14 +1,15 @@
 part of 'models.dart';
 
 class Post extends Equatable {
-  final String idPost;
-  final String idKategori;
+  final int idPost;
+  final int idKategori;
   final String namaKategori;
   final String namaPenulis;
   final String judul;
   final String slug;
   final String isiPost;
   final String fileGambar;
+  final int jmlhKomentar;
   // final DateTime tglInsert;
   // final DateTime tglUpdate;
 
@@ -21,14 +22,15 @@ class Post extends Equatable {
     this.slug,
     this.isiPost,
     this.fileGambar,
+    this.jmlhKomentar,
     // this.tglInsert,
     // this.tglUpdate,
   });
 
   factory Post.fromJson(Map<String, dynamic> data) {
     return Post(
-      idPost: data["idpost"],
-      idKategori: data["idkategori"],
+      idPost: int.parse(data["idpost"].toString()),
+      idKategori: int.parse(data["idkategori"].toString()),
       namaKategori: data["namakategori"],
       namaPenulis: data["namapenulis"],
       judul: data["judul"],
@@ -36,20 +38,22 @@ class Post extends Equatable {
       isiPost: data["isi_post"],
       // fileGambar: baseURLPost + data['file_gambar'],
       fileGambar: baseURLPost + 'artikel1.jpg',
+      jmlhKomentar: int.parse(data["jmlhkomentar"].toString()),
       // tglInsert: data["tgl_insert"],
       // tglUpdate: data["tgl_update"],
     );
   }
 
   Post copyWith({
-    String idPost,
-    String idKategori,
+    int idPost,
+    int idKategori,
     String namaKategori,
     String namaPenulis,
     String judul,
     String slug,
     String isiPost,
     String fileGambar,
+    int jmlhkomentar,
     // DateTime tglInsert,
     // DateTime tglUpdate,
   }) {
@@ -62,6 +66,7 @@ class Post extends Equatable {
       slug: slug ?? this.slug,
       isiPost: isiPost ?? this.isiPost,
       fileGambar: fileGambar ?? this.fileGambar,
+      jmlhKomentar: jmlhKomentar ?? this.jmlhKomentar,
       // tglInsert: tglInsert ?? this.tglInsert,
       // tglUpdate: tglUpdate ?? this.tglUpdate,
     );
@@ -77,6 +82,7 @@ class Post extends Equatable {
         slug,
         isiPost,
         fileGambar,
+        jmlhKomentar,
         // tglInsert,
         // tglUpdate
       ];
@@ -86,8 +92,8 @@ class Post extends Equatable {
 
 List<Post> mockPosts = [
   Post(
-    idPost: "1",
-    idKategori: "3",
+    idPost: 1,
+    idKategori: 3,
     namaKategori: "Olahraga",
     namaPenulis: "Rochmad",
     judul: "GOR Undip Ditutup Selama Pandemi Corona",
@@ -97,8 +103,8 @@ List<Post> mockPosts = [
     fileGambar: baseURLPost + 'artikel1.jpg',
   ),
   Post(
-    idPost: "2",
-    idKategori: "2",
+    idPost: 2,
+    idKategori: 2,
     namaKategori: "Ilmu Pengetahuan",
     namaPenulis: "Husni",
     judul: "Pakar Undip: Pentingnya Iptek bagi Ketersediaan Air Tawar",
@@ -108,8 +114,8 @@ List<Post> mockPosts = [
     fileGambar: baseURLPost + 'artikel2.jpg',
   ),
   Post(
-    idPost: "3",
-    idKategori: "1",
+    idPost: 3,
+    idKategori: 1,
     namaKategori: "Berita",
     namaPenulis: "Fatah",
     judul: "Undip akan Dorong Semua Kampus Buka Posko Pengaduan",
@@ -119,8 +125,8 @@ List<Post> mockPosts = [
     fileGambar: baseURLPost + 'artikel3.jpg',
   ),
   Post(
-    idPost: "4",
-    idKategori: "1",
+    idPost: 4,
+    idKategori: 1,
     namaKategori: "Berita",
     namaPenulis: "Rizqi",
     judul:
@@ -132,8 +138,8 @@ List<Post> mockPosts = [
     fileGambar: baseURLPost + 'artikel4.jpg',
   ),
   Post(
-    idPost: "5",
-    idKategori: "4",
+    idPost: 5,
+    idKategori: 4,
     namaKategori: "Prestasi",
     namaPenulis: "Husni",
     judul:
@@ -146,8 +152,8 @@ List<Post> mockPosts = [
         '128-mahasiswa-undip-rebut-posisi-terhormat-di-program-kreatifitas-mahasiswa-pkm-tahun-2020.jpeg',
   ),
   Post(
-    idPost: "6",
-    idKategori: "4",
+    idPost: 6,
+    idKategori: 4,
     namaKategori: "Prestasi",
     namaPenulis: "Rochmad",
     judul: "Mahasiswa Asing UNDIP Sabet Juara I LBBI 2020 di Surakarta",
@@ -158,8 +164,8 @@ List<Post> mockPosts = [
         'mahasiswa-asing-undip-sabet-juara-i-lbbi-2020-di-surakarta.jpeg',
   ),
   Post(
-    idPost: "7",
-    idKategori: "2",
+    idPost: 7,
+    idKategori: 2,
     namaKategori: "Ilmu Pengetahuan",
     namaPenulis: "Fatah",
     judul:
@@ -172,8 +178,8 @@ List<Post> mockPosts = [
         'rehabilitasi-ekosistem-mangrove-di-wilayah-terdampak-rob-dan-erosi-di-pesisir-tambakrejo.jpeg',
   ),
   Post(
-    idPost: "8",
-    idKategori: "2",
+    idPost: 8,
+    idKategori: 2,
     namaKategori: "Ilmu Pengetahuan",
     namaPenulis: "Rizqi",
     judul:

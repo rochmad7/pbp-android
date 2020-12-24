@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => KomentarCubit()),
-          BlocProvider(create: (_) => PostCubit()),
+          BlocProvider(create: (_) => PostCubit()..getPosts()),
         ],
         child: GetMaterialApp(
           title: 'Flutter News',
