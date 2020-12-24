@@ -17,7 +17,7 @@ class _BottomNavState extends State<BottomNav> {
   static List<Widget> _bottomNavView = [
     HomeView(),
     SearchView(),
-    FavoriteView(),
+    CategoryView(),
   ];
 
   @override
@@ -94,11 +94,11 @@ List<NavBarItem> _navBarList = [
   ),
   NavBarItem(
     icon: Icon(
-      Icons.apps,
+      Icons.explore,
       size: 30,
     ),
     activeIcon: Icon(
-      Icons.apps,
+      Icons.explore,
       size: 30,
     ),
     title: "Categories",
