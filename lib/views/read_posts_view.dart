@@ -24,7 +24,8 @@ class ReadPostView extends StatelessWidget {
                     icon: Icons.share,
                     onTap: () {
                       final RenderBox box = context.findRenderObject();
-                      Share.share(post.judul,
+                      Share.share(
+                          post.judul + "\n" + baseURLPostDetail + post.slug,
                           subject: baseURLPostDetail + post.slug,
                           sharePositionOrigin:
                               box.localToGlobal(Offset.zero) & box.size);
