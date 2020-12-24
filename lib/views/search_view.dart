@@ -68,7 +68,7 @@ class _SearchViewState extends State<SearchView> {
                     },
                     controller: keywordController,
                     decoration: InputDecoration(
-                        labelText: "Search",
+                        labelText: "Cari Artikel",
                         hintText: "Cari Artikel",
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(
@@ -78,12 +78,16 @@ class _SearchViewState extends State<SearchView> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: items.length,
+                    itemCount: items.toString() != "[]"
+                        ? items.length
+                        : state.posts.length,
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     physics: ScrollPhysics(),
                     itemBuilder: (context, index) {
-                      var post = items[index];
+                      var post = items.toString() != "[]"
+                          ? items[index]
+                          : state.posts[index];
                       return InkWell(
                         onTap: () {
                           Navigator.push(
@@ -103,16 +107,6 @@ class _SearchViewState extends State<SearchView> {
                       );
                     },
                   ),
-                  // child: ListView.builder(
-                  //   shrinkWrap: true,
-                  //   itemCount: items.length,
-                  //   itemBuilder: (context, index) {
-                  //     var posts = items[index];
-                  //     return ListTile(
-                  //       title: Text(posts.judul),
-                  //     );
-                  //   },
-                  // ),
                 ),
               ],
             ),
@@ -124,5 +118,10 @@ class _SearchViewState extends State<SearchView> {
         }
       },
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
