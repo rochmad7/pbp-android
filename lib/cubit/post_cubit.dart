@@ -8,8 +8,9 @@ part 'post_state.dart';
 class PostCubit extends Cubit<PostState> {
   PostCubit() : super(PostInitial());
 
-  Future<void> getPosts() async {
-    ApiReturnValue<List<Post>> result = await PostServices.getPosts();
+  Future<void> getPosts(int idKategori, String keyword) async {
+    ApiReturnValue<List<Post>> result =
+        await PostServices.getPosts(idKategori, keyword);
 
     if (result.value != null) {
       emit(PostLoaded(result.value));

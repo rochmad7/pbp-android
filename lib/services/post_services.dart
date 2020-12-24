@@ -2,10 +2,17 @@ part of 'services.dart';
 
 class PostServices {
   static Future<ApiReturnValue<List<Post>>> getPosts(
+      int idKategori, String keyword,
       {http.Client client}) async {
     client ??= http.Client();
-
-    String url = baseURLAPI + 'post';
+    String url;
+    if (keyword != null) {
+      url = baseURLAPI + 'post?keyword=' + keyword;
+    } else if (idKategori != null) {
+      url = baseURLAPI + 'post?idkategori=' + idKategori.toString();
+    } else {
+      url = baseURLAPI + 'post';
+    }
 
     var response = await client.get(url, headers: {
       "Content-Type": "application/json",
