@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_remote_icon/flutter_remote_icon.dart';
+import 'package:supercharged/supercharged.dart';
 
 String icon1 = "material://Icons.work";
 String icon2 = "material://Icons.smartphone";
+
+String iconcolor1 = "#008080";
 
 List list = [
   {
     "id": "business",
     "name": "Business",
     "icon": XIconData.fromUri(icon1),
-    "color": Colors.teal
+    "color": iconcolor1.toColor()
   },
   {
     "id": "technology",
@@ -21,7 +24,7 @@ List list = [
     "id": "science",
     "name": "Science",
     "icon": Icons.science,
-    "color": Colors.green[600]
+    "color": "#43a047".toColor(),
   },
   {
     "id": "sport",

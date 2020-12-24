@@ -7,3 +7,4 @@ import 'package:news_app/models/models.dart';
 
 part 'komentar_services.dart';
 part 'post_services.dart';
+part 'kategori_services.dart';

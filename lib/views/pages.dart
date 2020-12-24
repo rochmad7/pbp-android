@@ -14,6 +14,8 @@ import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './categories_list.dart' as categoriesList;
 import 'package:http/http.dart' as http;
+import 'package:flutter_remote_icon/flutter_remote_icon.dart';
+import 'package:supercharged/supercharged.dart';
 
 part 'account_view.dart';
 part 'home_view.dart';
