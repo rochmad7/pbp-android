@@ -17,7 +17,7 @@ class SecondaryCard extends StatelessWidget {
         children: [
           Container(
             width: 90.0,
-            height: 135.0,
+            height: 145.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
               image: DecorationImage(
@@ -39,27 +39,28 @@ class SecondaryCard extends StatelessWidget {
                     maxLines: 2,
                     style: kTitleCard,
                   ),
-                  SizedBox(height: 4.0),
+                  SizedBox(height: 5.0),
                   Text(
-                    post.namaPenulis,
+                    HtmlTags.removeTag(
+                      htmlString: post.isiPost,
+                      callback: (string) => print(string),
+                    ),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: kDetailContent,
                   ),
-                  Spacer(),
+                  SizedBox(height: 10.0),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("12 Desember", style: kDetailContent),
-                      SizedBox(width: 10.0),
-                      CircleAvatar(
-                        radius: 5.0,
-                        backgroundColor: kGrey1,
-                      ),
-                      SizedBox(width: 10.0),
                       Text(
-                        "${12} min read",
+                        convertDate(post.tglInsert, false),
                         style: kDetailContent,
-                      )
+                      ),
+                      Status(
+                        icon: Icons.comment,
+                        total: post.jmlhKomentar.toString(),
+                      ),
                     ],
                   )
                 ],

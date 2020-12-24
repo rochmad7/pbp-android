@@ -22,11 +22,13 @@ class ReadPostView extends StatelessWidget {
                   Spacer(),
                   CircleButton(
                     icon: Icons.share,
-                    onTap: () {},
-                  ),
-                  CircleButton(
-                    icon: Icons.favorite_border,
-                    onTap: () {},
+                    onTap: () {
+                      final RenderBox box = context.findRenderObject();
+                      Share.share(post.judul,
+                          subject: baseURLPostDetail + post.slug,
+                          sharePositionOrigin:
+                              box.localToGlobal(Offset.zero) & box.size);
+                    },
                   ),
                 ],
               ),
@@ -80,14 +82,10 @@ class ReadPostView extends StatelessWidget {
                 ),
                 Spacer(),
                 Status(
-                  icon: Icons.remove_red_eye,
-                  total: "15",
+                  icon: Icons.comment,
+                  total: post.jmlhKomentar.toString(),
                 ),
                 SizedBox(width: 15.0),
-                Status(
-                  icon: Icons.favorite_border,
-                  total: "20",
-                ),
               ],
             ),
             SizedBox(height: 12.0),
@@ -95,7 +93,11 @@ class ReadPostView extends StatelessWidget {
             SizedBox(height: 15.0),
             Row(
               children: [
-                Text("15 Desember", style: kDetailContent),
+                Text(
+                    convertDate(post.tglInsert, true) +
+                        " at " +
+                        convertTime(post.tglInsert),
+                    style: kDetailContent),
                 SizedBox(width: 5.0),
                 SizedBox(
                   width: 10.0,
@@ -112,16 +114,18 @@ class ReadPostView extends StatelessWidget {
               ],
             ),
             SizedBox(height: 15.0),
-            Text(
-              post.isiPost,
-              style: descriptionStyle,
-            ),
             Html(
               data: post.isiPost,
               //Optional parameters:
               style: {
+                "*": Style(
+                    margin: EdgeInsets.all(0), padding: EdgeInsets.all(0)),
                 "html": Style(
                   backgroundColor: Colors.white,
+                ),
+                "p": Style(
+                  fontSize: FontSize.large,
+                  lineHeight: 1.5,
                 ),
                 "table": Style(
                   backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
@@ -158,28 +162,6 @@ class ReadPostView extends StatelessWidget {
                 print(exception);
               },
             ),
-            // Html(
-            //   data: post.isiPost,
-            //   //Optional parameters:
-            //   onLinkTap: (url) {
-            //     // open url in a webview
-            //   },
-            //   style: {
-            //     "div": Style(
-            //       block: Block(
-            //         margin: EdgeInsets.all(16),
-            //         border: Border.all(width: 6),
-            //         backgroundColor: Colors.grey,
-            //       ),
-            //       textStyle: TextStyle(
-            //         color: Colors.red,
-            //       ),
-            //     ),
-            //   },
-            //   onImageTap: (src) {
-            //     // Display the image in large form.
-            //   },
-            // ),
             SizedBox(height: 25.0)
           ],
         ),

@@ -37,27 +37,25 @@ class PrimaryCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 5.0),
+          SizedBox(height: 10.0),
           Text(
             post.judul,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
             style: kTitleCard,
           ),
-          SizedBox(height: 5.0),
+          SizedBox(height: 10.0),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "12 Desember",
+                convertDate(post.tglInsert, false),
                 style: kDetailContent,
               ),
-              SizedBox(width: 10.0),
-              CircleAvatar(
-                radius: 5.0,
-                backgroundColor: kGrey1,
+              Status(
+                icon: Icons.comment,
+                total: post.jmlhKomentar.toString(),
               ),
-              SizedBox(width: 10.0),
-              Text("${12} min read", style: kDetailContent)
             ],
           )
         ],

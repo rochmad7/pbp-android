@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+
+const baseURLAPI = 'https://dipojournal.doltinuku.id/api/';
+const baseURLImg = 'https://dipojournal.doltinuku.id/assets/img/';
+const baseURLPostDetail = 'https://dipojournal.doltinuku.id/post/detail/';
 
 const kGrey1 = Color(0xFF9F9F9F);
 const kGrey2 = Color(0xFF6D6D6D);
@@ -46,3 +51,16 @@ var descriptionStyle = GoogleFonts.roboto(
   fontSize: 15.0,
   height: 2.0,
 ));
+
+String convertDate(DateTime dateTime, bool isFull) {
+  if (isFull) {
+    return DateFormat('EEEE, d MMM, yyyy').format(dateTime);
+  } else {
+    return DateFormat('EE, d MMM, yyyy').format(dateTime);
+  }
+}
+
+String convertTime(DateTime dateTime) {
+  DateFormat dateFormat = DateFormat('').add_jms();
+  return dateFormat.format(dateTime);
+}

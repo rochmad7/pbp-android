@@ -8,7 +8,7 @@ part 'komentar_state.dart';
 class KomentarCubit extends Cubit<KomentarState> {
   KomentarCubit() : super(KomentarInitial());
 
-  Future<void> getCategories(int idpost) async {
+  Future<void> getComments(int idpost) async {
     ApiReturnValue<List<Komentar>> result =
         await KomentarServices.getComments(idpost);
 
