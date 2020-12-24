@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -10,6 +12,7 @@ import 'package:news_app/widgets/widgets.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './categories_list.dart' as categoriesList;
+import 'package:http/http.dart' as http;
 
 part 'account_view.dart';
 part 'home_view.dart';

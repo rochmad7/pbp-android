@@ -25,7 +25,7 @@ class RecentTabView extends StatelessWidget {
                 },
                 child: Container(
                   width: double.infinity,
-                  height: 135.0,
+                  height: 145.0,
                   margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
                   child: SecondaryCard(post: posts),
                 ),

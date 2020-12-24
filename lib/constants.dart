@@ -64,3 +64,8 @@ String convertTime(DateTime dateTime) {
   DateFormat dateFormat = DateFormat('').add_jms();
   return dateFormat.format(dateTime);
 }
+
+bool containsIgnoreCase(String firstString, String secondString) {
+  firstString = firstString.toLowerCase();
+  return firstString.contains(secondString) ? true : false;
+}
