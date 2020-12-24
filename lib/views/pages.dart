@@ -12,10 +12,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:flutter_html/flutter_html.dart';
+import './categories_list.dart' as categoriesList;
 
 part 'account_view.dart';
 part 'home_view.dart';
-part 'favorite_view.dart';
+part 'category_view.dart';
 part 'search_view.dart';
 part 'read_posts_view.dart';
 part 'recent_tab_view.dart';
