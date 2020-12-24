@@ -5,7 +5,9 @@ class PopularTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        await context.read<PostCubit>().getPosts(null, null);
+        await context
+            .read<PostCubit>()
+            .getPosts(idKategori: null, keyword: null);
       },
       child: Container(
         child: ListView(

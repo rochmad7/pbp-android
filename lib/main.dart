@@ -15,10 +15,12 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => KomentarCubit()),
-          BlocProvider(create: (_) => PostCubit()..getPosts(null, null)),
+          BlocProvider(
+              create: (_) =>
+                  PostCubit()..getPosts(idKategori: null, keyword: null)),
         ],
         child: GetMaterialApp(
-          title: 'Flutter News',
+          title: 'PBP Android',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             visualDensity: VisualDensity.adaptivePlatformDensity,

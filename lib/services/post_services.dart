@@ -2,8 +2,7 @@ part of 'services.dart';
 
 class PostServices {
   static Future<ApiReturnValue<List<Post>>> getPosts(
-      int idKategori, String keyword,
-      {http.Client client}) async {
+      {int idKategori, String keyword, http.Client client}) async {
     client ??= http.Client();
     String url;
     if (keyword != null) {
