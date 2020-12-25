@@ -94,17 +94,13 @@ class CategoryView extends StatelessWidget {
                     ],
                   ),
                   onTap: () {
-                    // Navigator.push(
-                    // context,
-                    // MaterialPageRoute(
-                    //     builder: (_) =>
-                    //     ArticleSourceScreen.ArticleSourceScreen(
-                    //       sourceId: categoriesList.list[index]
-                    //       ['id'],
-                    //       sourceName: categoriesList.list[index]
-                    //       ["name"],
-                    //       isCategory: true,
-                    //     )));
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) =>
+                            CategoryPostsView(
+                              kategori: state.kategori[index],
+                        )));
                   },
                 ),
               ),
