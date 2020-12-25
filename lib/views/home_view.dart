@@ -21,8 +21,8 @@ class HomeView extends StatelessWidget {
                   indicatorColor: Colors.white,
                   labelStyle: kActiveTabStyle.copyWith(fontSize: 25.0),
                   tabs: [
-                    Tab(text: "Popular"),
                     Tab(text: "Recent"),
+                    Tab(text: "Popular"),
                   ],
                 ),
               ),
@@ -31,8 +31,8 @@ class HomeView extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            PopularTabView(),
             RecentTabView(),
+            PopularTabView(),
           ],
         ),
       ),
