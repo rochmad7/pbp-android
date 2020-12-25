@@ -25,7 +25,6 @@ class _SearchViewState extends State<SearchView> {
 
         posts =
             (data['post'] as Iterable).map((e) => Post.fromJson(e)).toList();
-        print(posts);
       });
     }
   }
@@ -77,7 +76,7 @@ class _SearchViewState extends State<SearchView> {
                                 BorderRadius.all(Radius.circular(25.0)))),
                   ),
                 ),
-                (items.length == 0 || state.posts.length == 0)
+                (items.toString() != "[]" && items.length == 0)
                     ? Column(
                         children: [
                           SizedBox(height: 10.0),
