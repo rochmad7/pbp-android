@@ -26,7 +26,6 @@ class _SearchViewState extends State<SearchView> {
         posts =
             (data['post'] as Iterable).map((e) => Post.fromJson(e)).toList();
         print(posts);
-
       });
     }
   }
@@ -78,42 +77,61 @@ class _SearchViewState extends State<SearchView> {
                                 BorderRadius.all(Radius.circular(25.0)))),
                   ),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: items.toString() != "[]"
-                        ? items.length
-                        : state.posts.length,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    physics: ScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      var post = items.toString() != "[]"
-                          ? items[index]
-                          : state.posts[index];
-                      return InkWell(
-                        onTap: () async {
-                          List<Komentar> komentar = await context
-                              .read<KomentarCubit>()
-                              .getComments(post.idPost);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ReadPostView(post: post, komentar: komentar),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          height: 145.0,
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 18.0, vertical: 8.0),
-                          child: SecondaryCard(post: post),
+                (items.length == 0 || state.posts.length == 0)
+                    ? Column(
+                        children: [
+                          SizedBox(height: 10.0),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 16),
+                            padding: EdgeInsets.symmetric(vertical: 16),
+                            color: Colors.black12,
+                            width: double.infinity,
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(MdiIcons.alert),
+                                  SizedBox(width: 5),
+                                  Text("Artikel tidak ditemukan")
+                                ]),
+                          ),
+                        ],
+                      )
+                    : Expanded(
+                        child: ListView.builder(
+                          itemCount: items.toString() != "[]"
+                              ? items.length
+                              : state.posts.length,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          physics: ScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            var post = items.toString() != "[]"
+                                ? items[index]
+                                : state.posts[index];
+                            return InkWell(
+                              onTap: () async {
+                                List<Komentar> komentar = await context
+                                    .read<KomentarCubit>()
+                                    .getComments(post.idPost);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ReadPostView(
+                                        post: post, komentar: komentar),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                height: 145.0,
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: 18.0, vertical: 8.0),
+                                child: SecondaryCard(post: post),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                ),
+                      ),
               ],
             ),
           );
