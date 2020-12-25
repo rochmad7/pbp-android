@@ -1,6 +1,8 @@
 part of 'pages.dart';
 
 class PopularTabView extends StatelessWidget {
+  final int batas = 5;
+
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -28,8 +30,9 @@ class PopularTabView extends StatelessWidget {
                     );
                   } else {
                     PostLoaded postLoaded = state as PostLoaded;
+
                     return ListView.builder(
-                      itemCount: postLoaded.posts.length,
+                      itemCount: batas,
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
@@ -71,12 +74,12 @@ class PopularTabView extends StatelessWidget {
               builder: (_, state) {
                 if (state is PostLoaded) {
                   return ListView.builder(
-                    itemCount: state.posts.length,
+                    itemCount: state.posts.length - batas,
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     physics: ScrollPhysics(),
                     itemBuilder: (context, index) {
-                      var post = state.posts[index];
+                      var post = state.posts[index + batas];
                       return InkWell(
                         onTap: () async {
                           List<Komentar> komentar = await context
