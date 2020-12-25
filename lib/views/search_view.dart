@@ -143,6 +143,8 @@ class _SearchViewState extends State<SearchView> {
 
   @override
   void dispose() {
+    isLoading = false;
+    keywordController.dispose();
     super.dispose();
   }
 }

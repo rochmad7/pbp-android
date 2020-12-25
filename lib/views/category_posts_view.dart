@@ -14,50 +14,6 @@ class _CategoryPostsViewState extends State<CategoryPostsView> {
   final kategori;
   _CategoryPostsViewState({this.kategori});
 
-  // List<Post> posts;
-  // var items = List<Post>();
-
-  // @override
-  // void initState() {
-  //   fetchData();
-  //   super.initState();
-  // }
-
-  // void fetchData() async {
-  //   final response = await http.get(baseURLAPI + 'post');
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       var data = jsonDecode(response.body);
-
-  //       posts =
-  //           (data['post'] as Iterable).map((e) => Post.fromJson(e)).toList();
-  //     });
-  //   }
-  // }
-
-  // void filterCategoryPosts(int idKategori) {
-  //   List<Post> dummySearchList = List<Post>();
-  //   dummySearchList.addAll(posts);
-  //   if (idKategori != null) {
-  //     List<Post> dummyListData = List<Post>();
-  //     dummySearchList.forEach((item) {
-  //       // if (containsIgnoreCase(item.judul, idKategori)) {
-  //       //   dummyListData.add(item);
-  //       // }
-  //     });
-  //     setState(() {
-  //       items.clear();
-  //       items.addAll(dummyListData);
-  //     });
-  //     return;
-  //   } else {
-  //     setState(() {
-  //       items.clear();
-  //       items.addAll(posts);
-  //     });
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PostCubit, PostState>(builder: (_, state) {
