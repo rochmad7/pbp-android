@@ -16,7 +16,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_remote_icon/flutter_remote_icon.dart';
 import 'package:supercharged/supercharged.dart';
 
-part 'account_view.dart';
 part 'home_view.dart';
 part 'category_view.dart';
 part 'search_view.dart';
