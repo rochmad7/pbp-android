@@ -1,18 +1,9 @@
 part of 'pages.dart';
 
-class CategoryPostsView extends StatefulWidget {
+class CategoryPostsView extends StatelessWidget {
   CategoryPostsView({this.kategori});
 
   final kategori;
-
-  @override
-  _CategoryPostsViewState createState() =>
-      _CategoryPostsViewState(kategori: this.kategori);
-}
-
-class _CategoryPostsViewState extends State<CategoryPostsView> {
-  final kategori;
-  _CategoryPostsViewState({this.kategori});
 
   @override
   Widget build(BuildContext context) {
@@ -120,10 +111,5 @@ class _CategoryPostsViewState extends State<CategoryPostsView> {
         );
       }
     });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }
