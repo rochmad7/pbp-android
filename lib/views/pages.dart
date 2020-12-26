@@ -22,6 +22,5 @@ part 'search_view.dart';
 part 'read_posts_view.dart';
 part 'popular_tab_view.dart';
 part 'recent_tab_view.dart';
-part 'trending_tab_view.dart';
 part 'category_posts_view.dart';
 part 'package:news_app/bottomNav.dart';
