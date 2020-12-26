@@ -139,6 +139,10 @@ class ReadPostView extends StatelessWidget {
                   fontSize: FontSize.large,
                   lineHeight: 1.5,
                 ),
+                "li": Style(
+                  fontSize: FontSize.large,
+                  lineHeight: 1.5,
+                ),
                 "table": Style(
                   backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
                 ),
