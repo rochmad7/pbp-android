@@ -43,34 +43,6 @@ class Post extends Equatable {
     );
   }
 
-  Post copyWith({
-    int idPost,
-    int idKategori,
-    String namaKategori,
-    String namaPenulis,
-    String judul,
-    String slug,
-    String isiPost,
-    String fileGambar,
-    int jmlhkomentar,
-    DateTime tglInsert,
-    DateTime tglUpdate,
-  }) {
-    return Post(
-      idPost: idPost ?? this.idPost,
-      idKategori: idKategori ?? this.idKategori,
-      namaKategori: namaKategori ?? this.namaKategori,
-      namaPenulis: namaPenulis ?? this.namaPenulis,
-      judul: judul ?? this.judul,
-      slug: slug ?? this.slug,
-      isiPost: isiPost ?? this.isiPost,
-      fileGambar: fileGambar ?? this.fileGambar,
-      jmlhKomentar: jmlhKomentar ?? this.jmlhKomentar,
-      tglInsert: tglInsert ?? this.tglInsert,
-      tglUpdate: tglUpdate ?? this.tglUpdate,
-    );
-  }
-
   @override
   List<Object> get props => [
         idPost,

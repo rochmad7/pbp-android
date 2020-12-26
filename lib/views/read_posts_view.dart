@@ -108,9 +108,19 @@ class ReadPostView extends StatelessWidget {
                     height: 1.0,
                   ),
                 ),
-                SizedBox(width: 5.0),
+              ],
+            ),
+            SizedBox(height: 5.0),
+            Row(
+              children: [
+                Text(
+                  "Posted By: ",
+                  style: kDetailContent.copyWith(
+                      color: Colors.black, fontSize: 12),
+                ),
                 Text(
                   post.namaPenulis,
+                  maxLines: 1,
                   style: kDetailContent.copyWith(color: Colors.black),
                 ),
               ],
