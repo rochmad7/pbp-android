@@ -43,16 +43,20 @@ class _SearchViewState extends State<SearchView> {
           dummyListData.add(item);
         }
       });
-      setState(() {
-        items.clear();
-        items.addAll(dummyListData);
-      });
-      return;
+      if(mounted) {
+        setState(() {
+          items.clear();
+          items.addAll(dummyListData);
+        });
+        return;
+      }
     } else {
-      setState(() {
-        items.clear();
-        items.addAll(posts);
-      });
+      if(mounted) {
+        setState(() {
+          items.clear();
+          items.addAll(posts);
+        });
+      }
     }
   }
 
